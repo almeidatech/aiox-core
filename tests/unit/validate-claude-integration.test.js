@@ -7,6 +7,7 @@ const { spawnSync } = require('child_process');
 
 const {
   validateClaudeIntegration,
+  listTopLevelNames,
 } = require('../../.aiox-core/infrastructure/scripts/validate-claude-integration');
 
 describe('validate-claude-integration', () => {
@@ -22,6 +23,7 @@ describe('validate-claude-integration', () => {
   });
 
   afterEach(() => {
+    jest.restoreAllMocks();
     fs.rmSync(tmpRoot, { recursive: true, force: true });
   });
 
@@ -79,6 +81,20 @@ describe('validate-claude-integration', () => {
 
     const result = validateClaudeIntegration({ projectRoot: tmpRoot });
     expect(result.ok).toBe(true);
+  });
+
+  it('includes symbolic links when inspecting top-level Claude entries', () => {
+    jest.spyOn(fs, 'existsSync').mockReturnValue(true);
+    jest.spyOn(fs, 'readdirSync').mockReturnValue([
+      {
+        name: 'linked-skill',
+        isDirectory: () => false,
+        isFile: () => false,
+        isSymbolicLink: () => true,
+      },
+    ]);
+
+    expect(listTopLevelNames('/tmp/.claude/skills', null)).toEqual(['linked-skill']);
   });
 
   it('fails when Claude agent skills dir is missing', () => {

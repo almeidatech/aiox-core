@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 5.3.0
-generated_at: "2026-07-11T17:07:50.052Z"
+generated_at: "2026-07-13T20:16:51.869Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1164
+file_count: 1165
 files:
   - path: cli/commands/config/index.js
     hash: sha256:356d0cac24747a323fe52089a933d5e5583777cb1f07568e01e43ab0e2c3bcdc
@@ -105,9 +105,13 @@ files:
     type: cli
     size: 11845
   - path: cli/commands/pro/index.js
-    hash: sha256:9646c62ad5b495002a66e380246306d42984d704653f69faa760278f7de05bc8
+    hash: sha256:fa5906bb654591a24c9f59714f2018eb649d46acc593f6b6da101a703b855c7e
     type: cli
-    size: 24584
+    size: 24796
+  - path: cli/commands/pro/seats.js
+    hash: sha256:10f97aa5c5ad1010e6726a61c27ab1624b28b1735c473ac2ccbcbfc816b73bbe
+    type: cli
+    size: 5694
   - path: cli/commands/qa/index.js
     hash: sha256:3a9e30419a66e56781f9b5dcddc8f4dd0ed24dabf8fe8c3005cd26f5cb02558f
     type: cli
@@ -3617,9 +3621,9 @@ files:
     type: script
     size: 14900
   - path: infrastructure/scripts/validate-claude-integration.js
-    hash: sha256:2978d33c4f820952dda79bceeff8e300f50282acfa5a5dc187b03c1ef2d23529
+    hash: sha256:ed67614717d92ae78dd8ea07217896f8207bcecd1b441f708ad6eccda436bc51
     type: script
-    size: 8326
+    size: 8420
   - path: infrastructure/scripts/validate-codex-integration.js
     hash: sha256:0f45a49898528d708ef17871bf6abae4f60483ef8520ce30a9bd4f5e507c585f
     type: script

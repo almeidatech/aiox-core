@@ -11,11 +11,14 @@ const ALLOWED_NATIVE_SUBAGENTS = new Set([
   'aiox-data-engineer',
   'aiox-dev',
   'aiox-devops',
+  'aiox-master',
   'aiox-pm',
   'aiox-po',
   'aiox-qa',
   'aiox-sm',
+  'aiox-squad-creator',
   'aiox-ux',
+  'aiox-ux-design-expert',
 ]);
 
 const ALLOWED_CLAUDE_COMMAND_ENTRIES = new Set([
@@ -30,8 +33,8 @@ const ALLOWED_CLAUDE_SKILL_ENTRIES = new Set([
   'apply-qa-fixes',
   'architect-first',
   'checklist-runner',
-  'close-story',
   'coderabbit-review',
+  'close-story',
   'develop-story',
   'full-sdc',
   'mcp-builder',
@@ -83,7 +86,7 @@ function isGitIgnored(projectRoot, relativePath) {
 function listTopLevelNames(dirPath, projectRoot) {
   if (!fs.existsSync(dirPath)) return [];
   return fs.readdirSync(dirPath, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() || entry.isFile())
+    .filter((entry) => entry.isDirectory() || entry.isFile() || entry.isSymbolicLink())
     .filter((entry) => {
       if (!projectRoot) return true;
       const relativePath = path.relative(projectRoot, path.join(dirPath, entry.name)).split(path.sep).join('/');
